@@ -1,0 +1,87 @@
+our ($_class_cmeta, $m, $_m_buffer, $_interp);
+BEGIN { 
+local $_interp = Mason::Interp->current_load_interp;
+$_interp->component_moose_class->import;
+$_interp->component_import_class->import;
+}
+*m = \$Mason::Request::current_request;
+*_m_buffer = \$Mason::Request::current_buffer;
+sub _inner { inner() }
+method _set_class_cmeta ($interp) {
+$_class_cmeta = $interp->component_class_meta_class->new(
+'class' => CLASS,
+'dir_path' => '/',
+'interp' => $interp,
+'is_top_level' => '1',
+'object_file' => __FILE__,
+'path' => '/contact.mc',
+'source_file' => 'C:/Users/gk70402/Desktop/cgipy/perlhello/comps/contact.mc',
+);
+}
+sub _unset_class_cmeta { undef $_class_cmeta }
+sub _class_cmeta { $_class_cmeta }
+method main  {
+#line 1 "C:/Users/gk70402/Desktop/cgipy/perlhello/comps/contact.mc"
+$$_m_buffer .= '<html>
+    <head>
+        <link rel="stylesheet" href="/static/css/blog.css">
+        <title>My Blog: Home</title>
+    </head>
+    <body>
+        ';
+#line 7 "C:/Users/gk70402/Desktop/cgipy/perlhello/comps/contact.mc"
+$m->comp(   'header.mi'  
+); #line 7 "C:/Users/gk70402/Desktop/cgipy/perlhello/comps/contact.mc"
+$$_m_buffer .= '
+
+        <div class="card" align="center">
+            <div class="card-body">
+                <h1> Contact perlhello Project </h1>
+
+                <h4> B.V.R. Mohan Reddy </h4>
+                <p> FOUNDER & EXECUTIVE CHAIRMAN </p>
+
+                <h4> Krishna Bodanapu </h4>
+                <p> MANAGING DIRECTOR & CEO </p>
+
+                <h4> Karthik Natarajan </h4>
+                <p> Executive Director & Chief Operating Officer </p>
+
+                <h4> Prabhakar Atla </h4>
+                <p> President & Global Head - ARC cluster </p>
+
+                <h4> Vikram Chimalgi </h4>
+                <p> Senior Vice President & Global Delivery Head - Communications </p>
+
+                <h4> Shyamal Mittra </h4>
+                <p> Vice President - NAM Delivery Management </p>
+
+                <h4> Shivaprasad Salethur </h4>
+                <p> Senior Director - Systems Consulting Delivery </p>
+
+                <h4> Ramakanth Gangisetti </h4>
+                <p> Delivery Director </p>
+
+                <h4> Vattikonda Hemanth </h4>
+                <p> Team Lead </p>
+
+
+            </div>
+        </div>
+
+        ';
+#line 44 "C:/Users/gk70402/Desktop/cgipy/perlhello/comps/contact.mc"
+$m->comp(   'footer.mi'  
+); #line 44 "C:/Users/gk70402/Desktop/cgipy/perlhello/comps/contact.mc"
+$$_m_buffer .= '
+    </body>
+</html>
+
+
+
+
+
+';
+
+;return;
+}
