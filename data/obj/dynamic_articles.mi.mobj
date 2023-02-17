@@ -1,0 +1,141 @@
+our ($_class_cmeta, $m, $_m_buffer, $_interp);
+BEGIN { 
+local $_interp = Mason::Interp->current_load_interp;
+$_interp->component_moose_class->import;
+$_interp->component_import_class->import;
+}
+*m = \$Mason::Request::current_request;
+*_m_buffer = \$Mason::Request::current_buffer;
+sub _inner { inner() }
+method _set_class_cmeta ($interp) {
+$_class_cmeta = $interp->component_class_meta_class->new(
+'class' => CLASS,
+'dir_path' => '/',
+'interp' => $interp,
+'is_top_level' => '0',
+'object_file' => __FILE__,
+'path' => '/dynamic_articles.mi',
+'source_file' => 'C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi',
+);
+}
+sub _unset_class_cmeta { undef $_class_cmeta }
+sub _class_cmeta { $_class_cmeta }
+#line 2 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
+
+has 'foo';
+has 'baz' => (isa => 'Int', default => 17);
+method main  {
+#line 7 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
+
+my $value = 999999;
+use Article;
+
+
+my @articles = @{ Article -> get_articles(1, 10) };
+my @commits =  Article -> get_commits() ;
+
+
+my $output = $m->scomp('othercomponent.mi');
+
+
+#line 20 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
+for (scalar( $self->baz )) { $$_m_buffer .= $_ if defined }
+#line 20 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
+$$_m_buffer .= '
+';
+#line 21 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
+for (scalar($output)) { $$_m_buffer .= $_ if defined }
+#line 21 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
+$$_m_buffer .= '
+
+';
+#line 23 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
+ if (@articles) {
+$$_m_buffer .= '<b>Showing ';
+#line 24 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
+for (scalar(scalar(@articles))) { $$_m_buffer .= $_ if defined }
+#line 24 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
+$$_m_buffer .= ' article';
+#line 24 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
+for (scalar(@articles > 1 ? "s" : "")) { $$_m_buffer .= $_ if defined }
+#line 24 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
+$$_m_buffer .= '.</b>
+<ul class="articles" >
+';
+#line 26 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
+   foreach my $article (@articles) {
+$$_m_buffer .= '  <li> <b>Title-> </b> ';
+#line 27 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
+for (scalar($article -> {_title})) { $$_m_buffer .= $_ if defined }
+#line 27 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
+$$_m_buffer .= ' <b>Content-> </b>  ';
+#line 27 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
+for (scalar($article -> {_content})) { $$_m_buffer .= $_ if defined }
+#line 27 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
+$$_m_buffer .= '</li><br>
+';
+#line 28 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
+   }
+$$_m_buffer .= '</ul>
+';
+#line 30 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
+ }
+ else {
+$$_m_buffer .= '<p>No articles yet.</p>
+';
+#line 33 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
+ }
+$$_m_buffer .= '
+<br>
+';
+#line 36 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
+ if (@commits) {
+$$_m_buffer .= '
+<ul class="commits">
+';
+#line 39 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
+   foreach my $commit (@commits) {
+$$_m_buffer .= '  <li><b>Name-> </b> ';
+#line 40 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
+for (scalar($$commit{'name'})) { $$_m_buffer .= $_ if defined }
+#line 40 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
+$$_m_buffer .= '  <b>Message-></b> ';
+#line 40 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
+for (scalar($$commit{'message'})) { $$_m_buffer .= $_ if defined }
+#line 40 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
+$$_m_buffer .= ' <b>Date-></b> ';
+#line 40 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
+for (scalar($$commit{'date'})) { $$_m_buffer .= $_ if defined }
+#line 40 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
+$$_m_buffer .= '</li>
+';
+#line 41 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
+   }
+$$_m_buffer .= '</ul>
+
+';
+#line 44 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
+ }
+ else {
+$$_m_buffer .= '<p>No commits yet.</p>
+';
+#line 47 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
+ }
+$$_m_buffer .= '
+
+
+
+';
+#line 52 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
+$self->m->_apply_filters_to_output(  $self->HTMLPara  , sub {
+#line 52 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
+$$_m_buffer .= 'First paragraph.
+   
+Second paragraph.
+';
+
+;return;
+});
+
+;return;
+}

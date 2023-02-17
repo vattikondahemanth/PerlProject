@@ -15,37 +15,43 @@ $_class_cmeta = $interp->component_class_meta_class->new(
 'is_top_level' => '1',
 'object_file' => __FILE__,
 'path' => '/index.mc',
-'source_file' => 'C:/Users/gk70402/Desktop/cgipy/perlhello/comps/index.mc',
+'source_file' => 'C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/index.mc',
 );
 }
 sub _unset_class_cmeta { undef $_class_cmeta }
 sub _class_cmeta { $_class_cmeta }
 method main  {
-#line 1 "C:/Users/gk70402/Desktop/cgipy/perlhello/comps/index.mc"
+#line 5 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/index.mc"
+
+	my $session = $m->req->session;
+	$session->{message} = "";
+
+#line 1 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/index.mc"
 $$_m_buffer .= '<html>
    <head>
      <link rel="stylesheet" href="/static/css/blog.css">
-     <title>My Blog: Home</title>
-
-   </head>
+     <title>My Blog: Home</title>';
+#line 10 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/index.mc"
+$$_m_buffer .= '   </head>
    <body>
 	  ';
-#line 8 "C:/Users/gk70402/Desktop/cgipy/perlhello/comps/index.mc"
+#line 12 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/index.mc"
 $m->comp(   'header.mi'  
-); #line 8 "C:/Users/gk70402/Desktop/cgipy/perlhello/comps/index.mc"
+); #line 12 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/index.mc"
 $$_m_buffer .= '
 
     <h2>Welcome to my blog.</h2>
 	 Hello world! The local time is ';
-#line 11 "C:/Users/gk70402/Desktop/cgipy/perlhello/comps/index.mc"
+#line 15 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/index.mc"
 for (scalar(scalar(localtime))) { $$_m_buffer .= $_ if defined }
-#line 11 "C:/Users/gk70402/Desktop/cgipy/perlhello/comps/index.mc"
+#line 15 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/index.mc"
 $$_m_buffer .= '.
 
+  <p> ------------------------------------------------------------------------------------------------</p>
 	';
-#line 13 "C:/Users/gk70402/Desktop/cgipy/perlhello/comps/index.mc"
-$m->comp(   'all_articles.mi'  
-); #line 13 "C:/Users/gk70402/Desktop/cgipy/perlhello/comps/index.mc"
+#line 18 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/index.mc"
+$m->comp(   'dynamic_articles.mi'  
+); #line 18 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/index.mc"
 $$_m_buffer .= '
 	
     <a href="/new_article">Add an article</a>
@@ -53,9 +59,9 @@ $$_m_buffer .= '
 
 
 	  ';
-#line 19 "C:/Users/gk70402/Desktop/cgipy/perlhello/comps/index.mc"
+#line 24 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/index.mc"
 $m->comp(   'footer.mi'  
-); #line 19 "C:/Users/gk70402/Desktop/cgipy/perlhello/comps/index.mc"
+); #line 24 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/index.mc"
 $$_m_buffer .= '
 
   </body>

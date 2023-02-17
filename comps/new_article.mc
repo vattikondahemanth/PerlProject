@@ -4,10 +4,16 @@
      <title>My Blog: Home</title>
    </head>
    <body>
-   
-    <& header.mi &>
+        <& header.mi &>
 
-    <h2>This is article Page</h2>
+
+<%init>
+
+warn("============new_article is being executed!\n");
+
+</%init>
+
+     <h2>This is article Page</h2>
 	 <form action="publish" type="POST">
 	  <input type="text" id="title" class="fadeIn third" name="title" placeholder="Enter your title">
 	  <br />
@@ -21,13 +27,13 @@
 	  <br />
 	  <br />
 	  <h2 style="color:#069">
-	  <% $m -> req -> session -> {message} %>
+		<% $m -> req -> session -> {message} %>
 	  </h2>
 	
 	</br>
 	</br>
     </form>
-    <& footer.mi &>
+        <& footer.mi &>
 
   </body>
 </html>

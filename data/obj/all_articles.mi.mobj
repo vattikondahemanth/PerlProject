@@ -15,29 +15,77 @@ $_class_cmeta = $interp->component_class_meta_class->new(
 'is_top_level' => '0',
 'object_file' => __FILE__,
 'path' => '/all_articles.mi',
-'source_file' => 'C:/Users/vatti/Desktop/Perl_scripts/Perl_Hello/comps/all_articles.mi',
+'source_file' => 'C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/all_articles.mi',
 );
 }
 sub _unset_class_cmeta { undef $_class_cmeta }
 sub _class_cmeta { $_class_cmeta }
+#line 2 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/all_articles.mi"
+
+has 'foo';
+has 'baz' => (isa => 'Int', default => 17);
 method main  {
-#line 1 "C:/Users/vatti/Desktop/Perl_scripts/Perl_Hello/comps/all_articles.mi"
-$$_m_buffer .= '<p>Article 1</p>
-<p>Article 2</p>
-<p>Article 3</p>
+#line 7 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/all_articles.mi"
 
+my $value = 999999;
+use Article;
+
+
+my @articles = @{ Article -> get_articles(1, 10) };
+
+my $output = $m->scomp('othercomponent.mi');
+
+
+#line 18 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/all_articles.mi"
+for (scalar( $self->baz )) { $$_m_buffer .= $_ if defined }
+#line 18 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/all_articles.mi"
+$$_m_buffer .= '
+';
+#line 19 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/all_articles.mi"
+for (scalar($output)) { $$_m_buffer .= $_ if defined }
+#line 19 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/all_articles.mi"
+$$_m_buffer .= '
 
 ';
-#line 6 "C:/Users/vatti/Desktop/Perl_scripts/Perl_Hello/comps/all_articles.mi"
-$self->m->_apply_filters_to_output(  $self->HTMLParaBreak  , sub {
-#line 6 "C:/Users/vatti/Desktop/Perl_scripts/Perl_Hello/comps/all_articles.mi"
-$$_m_buffer .= 'First paragraph.
-   
-Second paragraph.
+#line 21 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/all_articles.mi"
+ if (@articles) {
+$$_m_buffer .= '<b>Showing ';
+#line 22 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/all_articles.mi"
+for (scalar(scalar(@articles))) { $$_m_buffer .= $_ if defined }
+#line 22 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/all_articles.mi"
+$$_m_buffer .= ' article';
+#line 22 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/all_articles.mi"
+for (scalar(@articles > 1 ? "s" : "")) { $$_m_buffer .= $_ if defined }
+#line 22 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/all_articles.mi"
+$$_m_buffer .= '.</b>
+<ul class="articles" >
 ';
+#line 24 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/all_articles.mi"
+   foreach my $article (@articles) {
+$$_m_buffer .= '  <li> <b>Title-> </b> ';
+#line 25 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/all_articles.mi"
+for (scalar($article -> {_title})) { $$_m_buffer .= $_ if defined }
+#line 25 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/all_articles.mi"
+$$_m_buffer .= ' <b>Content-> </b>  ';
+#line 25 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/all_articles.mi"
+for (scalar($article -> {_content})) { $$_m_buffer .= $_ if defined }
+#line 25 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/all_articles.mi"
+$$_m_buffer .= '</li><br>
+';
+#line 26 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/all_articles.mi"
+   }
+$$_m_buffer .= '</ul>
+';
+#line 28 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/all_articles.mi"
+ }
+ else {
+$$_m_buffer .= '<p>No articles yet.</p>
+';
+#line 31 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/all_articles.mi"
+ }
+$$_m_buffer .= '
 
-;return;
-});
+';
 
 ;return;
 }

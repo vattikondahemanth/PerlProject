@@ -58,7 +58,7 @@ $$_m_buffer .= '
       <li><a href="news">News</a></li>
       <li><a href="contact">Contact</a></li>
       <li><a href="new_article">Create Article </a></li>
-      <li><a href="dynamic_articles">All Article </a></li>
+      <li><a href="all_articles">All Article </a></li>
       <li style="float:right"><a class="active" href="/about">About</a></li>
     </ul>';
 

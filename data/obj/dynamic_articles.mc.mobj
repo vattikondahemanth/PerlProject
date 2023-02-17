@@ -21,28 +21,40 @@ $_class_cmeta = $interp->component_class_meta_class->new(
 sub _unset_class_cmeta { undef $_class_cmeta }
 sub _class_cmeta { $_class_cmeta }
 method main  {
+#line 5 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mc"
+
+	my $session = $m->req->session;
+	$session->{message} = "";
+
 #line 1 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mc"
 $$_m_buffer .= '<html>
-    <head>
-        <link rel="stylesheet" href="/static/css/blog.css">
-        <title>My Blog: Home</title>
-    </head>
-    <body>
-        ';
-#line 7 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mc"
+   <head>
+     <link rel="stylesheet" href="/static/css/blog.css">
+     <title>My Blog: Home</title>';
+#line 10 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mc"
+$$_m_buffer .= '   </head>
+   <body>
+
+	  ';
+#line 13 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mc"
 $m->comp(   'header.mi'  
-); #line 7 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mc"
+); #line 13 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mc"
 $$_m_buffer .= '
-            <div>
-                <h2 align="center" > Artical - 1 </h2>
-            </div>
-            <p align="justify"> &nbsp&nbsp&nbsp&nbsp Artical - 1 Content </p>
-        ';
-#line 12 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mc"
+
+	    ';
+#line 15 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mc"
+$m->comp(   'dynamic_articles.mi'  
+); #line 15 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mc"
+$$_m_buffer .= '
+
+
+	  ';
+#line 18 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mc"
 $m->comp(   'footer.mi'  
-); #line 12 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mc"
+); #line 18 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mc"
 $$_m_buffer .= '
-    </body>
+
+  </body>
 </html>';
 
 ;return;

@@ -1,0 +1,48 @@
+
+<%class>
+has 'foo';
+has 'baz' => (isa => 'Int', default => 17);
+</%class>
+
+<%init>
+my $value = 999999;
+use Article;
+
+
+my @articles = @{ Article -> get_articles(1, 10) };
+my @commits =  Article -> get_commits() ;
+
+
+my $output = $m->scomp('othercomponent.mi');
+
+</%init>
+
+<% $.baz %>
+<% $output %>
+
+% if (@articles) {
+<b>Showing <% scalar(@articles) %> article<% @articles > 1 ? "s" : "" %>.</b>
+<ul class="articles" >
+%   foreach my $article (@articles) {
+  <li> <b>Title-> </b> <% $article -> {_title} %> <b>Content-> </b>  <% $article -> {_content} %></li><br>
+%   }
+</ul>
+% }
+% else {
+<p>No articles yet.</p>
+% }
+
+<br>
+% if (@commits) {
+
+<ul class="commits">
+%   foreach my $commit (@commits) {
+  <li><b>Name-> </b> <% $$commit{'name'} %>  <b>Message-></b> <% $$commit{'message'} %> <b>Date-></b> <% $$commit{'date'} %></li>
+%   }
+</ul>
+
+% }
+% else {
+<p>No commits yet.</p>
+% }
+

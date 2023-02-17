@@ -1,10 +1,16 @@
- #!/usr/bin/perl
- use Cwd qw(realpath);
- use File::Basename;
- use Mason;
- use Plack::Builder;
- use warnings;
- use strict;
+#!/usr/bin/perl
+use Cwd qw(realpath);
+use File::Basename;
+use Mason;
+use HTML::Mason;
+use HTML::Mason::Request;
+use Plack::Builder;
+use Plack::App::File;
+use Template;
+use Path::Router;
+
+use warnings;
+use strict;
    
  # Include Mason plugins here
 my @plugins = ('PSGIHandler', 'HTMLFilters');
@@ -13,7 +19,6 @@ my @plugins = ('PSGIHandler', 'HTMLFilters');
 my $cwd = dirname( realpath(__FILE__) );
 my $interp = Mason->new(
     comp_root => "$cwd/comps",
-    data_dir  => "$cwd/data",
     data_dir  => "$cwd/data",
     plugins   => \@plugins,
 );
@@ -29,5 +34,6 @@ my $app = sub {
 builder {
     # Include PSGI middleware here
     enable 'Session';
-    $app;
+    mount "/images" => Plack::App::File->new( root => "$cwd/static/images" );
+    mount "/" => $app;
 };
