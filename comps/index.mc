@@ -16,9 +16,6 @@
 
   <p> ------------------------------------------------------------------------------------------------</p>
 	<& dynamic_articles.mi &>
-	
-    <a href="/new_article">Add an article</a>
-    <a href="/article_01"> Article - 1</a>
 
 
 	  <& footer.mi &>

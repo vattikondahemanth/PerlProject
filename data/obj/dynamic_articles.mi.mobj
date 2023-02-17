@@ -85,7 +85,7 @@ $$_m_buffer .= '<p>No articles yet.</p>
 ';
 #line 33 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
  }
-$$_m_buffer .= '
+$$_m_buffer .= '<p> 0000000000000000000000000000000000</p>
 <br>
 ';
 #line 36 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
@@ -122,20 +122,7 @@ $$_m_buffer .= '<p>No commits yet.</p>
 #line 47 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
  }
 $$_m_buffer .= '
-
-
-
 ';
-#line 52 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
-$self->m->_apply_filters_to_output(  $self->HTMLPara  , sub {
-#line 52 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
-$$_m_buffer .= 'First paragraph.
-   
-Second paragraph.
-';
-
-;return;
-});
 
 ;return;
 }

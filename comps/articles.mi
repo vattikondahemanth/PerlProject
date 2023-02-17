@@ -1,7 +1,6 @@
 
 <%class>
 has 'foo';
-has 'baz' => (isa => 'Int', default => 17);
 </%class>
 
 <%init>
@@ -13,36 +12,25 @@ my @articles = @{ Article -> get_articles(1, 10) };
 my @commits =  Article -> get_commits() ;
 
 
-my $output = $m->scomp('othercomponent.mi');
-
 </%init>
 
-<% $.baz %>
-<% $output %>
 
 % if (@articles) {
-<b>Showing <% scalar(@articles) %> article<% @articles > 1 ? "s" : "" %>.</b>
-<ul class="articles" >
+    <h4 align="center"> <b>Showing <% scalar(@articles) %> article<% @articles > 1 ? "s" : "" %>.</b> <h4>
+
+    <div  class="articles" >
 %   foreach my $article (@articles) {
-  <li> <b>Title-> </b> <% $article -> {_title} %> <b>Content-> </b>  <% $article -> {_content} %></li><br>
+    <div class="card mt-4" >
+    <div class="card-header text-center"> <% $article -> {_title} %> </div>
+    <div class="card-body"> <% $article -> {_content} %> </div> 
+    <div class="card-body">
+    <button type=\"submit\" >Submit</button>
+    <button type=\"button\" > <a href="/index"> Cancel </a> </button>
+    </div>
 %   }
-</ul>
 % }
 % else {
 <p>No articles yet.</p>
 % }
-
-<br>
-% if (@commits) {
-
-<ul class="commits">
-%   foreach my $commit (@commits) {
-  <li><b>Name-> </b> <% $$commit{'name'} %>  <b>Message-></b> <% $$commit{'message'} %> <b>Date-></b> <% $$commit{'date'} %></li>
-%   }
-</ul>
-
-% }
-% else {
-<p>No commits yet.</p>
-% }
+    </div>
 

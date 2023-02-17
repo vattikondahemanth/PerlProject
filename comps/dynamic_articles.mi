@@ -31,7 +31,6 @@ my $output = $m->scomp('othercomponent.mi');
 % else {
 <p>No articles yet.</p>
 % }
-
 <br>
 % if (@commits) {
 
@@ -46,11 +45,3 @@ my $output = $m->scomp('othercomponent.mi');
 <p>No commits yet.</p>
 % }
 
-
-
-
-% $.HTMLPara {{
-First paragraph.
-   
-Second paragraph.
-% }}

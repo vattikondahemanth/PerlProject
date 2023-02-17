@@ -1,0 +1,86 @@
+our ($_class_cmeta, $m, $_m_buffer, $_interp);
+BEGIN { 
+local $_interp = Mason::Interp->current_load_interp;
+$_interp->component_moose_class->import;
+$_interp->component_import_class->import;
+}
+*m = \$Mason::Request::current_request;
+*_m_buffer = \$Mason::Request::current_buffer;
+sub _inner { inner() }
+method _set_class_cmeta ($interp) {
+$_class_cmeta = $interp->component_class_meta_class->new(
+'class' => CLASS,
+'dir_path' => '/',
+'interp' => $interp,
+'is_top_level' => '0',
+'object_file' => __FILE__,
+'path' => '/articles.mi',
+'source_file' => 'C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/articles.mi',
+);
+}
+sub _unset_class_cmeta { undef $_class_cmeta }
+sub _class_cmeta { $_class_cmeta }
+#line 2 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/articles.mi"
+
+has 'foo';
+method main  {
+#line 6 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/articles.mi"
+
+my $value = 999999;
+use Article;
+
+
+my @articles = @{ Article -> get_articles(1, 10) };
+my @commits =  Article -> get_commits() ;
+
+
+
+#line 17 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/articles.mi"
+$$_m_buffer .= '
+';
+#line 18 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/articles.mi"
+ if (@articles) {
+$$_m_buffer .= '    <h4 align="center"> <b>Showing ';
+#line 19 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/articles.mi"
+for (scalar(scalar(@articles))) { $$_m_buffer .= $_ if defined }
+#line 19 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/articles.mi"
+$$_m_buffer .= ' article';
+#line 19 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/articles.mi"
+for (scalar(@articles > 1 ? "s" : "")) { $$_m_buffer .= $_ if defined }
+#line 19 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/articles.mi"
+$$_m_buffer .= '.</b> <h4>
+
+    <div  class="articles" >
+';
+#line 22 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/articles.mi"
+   foreach my $article (@articles) {
+$$_m_buffer .= '    <div class="card mt-4" >
+    <div class="card-header text-center"> ';
+#line 24 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/articles.mi"
+for (scalar($article -> {_title})) { $$_m_buffer .= $_ if defined }
+#line 24 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/articles.mi"
+$$_m_buffer .= ' </div>
+    <div class="card-body"> ';
+#line 25 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/articles.mi"
+for (scalar($article -> {_content})) { $$_m_buffer .= $_ if defined }
+#line 25 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/articles.mi"
+$$_m_buffer .= ' </div> 
+    <div class="card-body">
+    <button type=\\"submit\\" >Submit</button>
+    <button type=\\"button\\" > <a href="/index"> Cancel </a> </button>
+    </div>
+';
+#line 30 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/articles.mi"
+   }
+ }
+ else {
+$$_m_buffer .= '<p>No articles yet.</p>
+';
+#line 34 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/articles.mi"
+ }
+$$_m_buffer .= '    </div>
+
+';
+
+;return;
+}
