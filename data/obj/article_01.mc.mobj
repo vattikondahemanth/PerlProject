@@ -15,13 +15,13 @@ $_class_cmeta = $interp->component_class_meta_class->new(
 'is_top_level' => '1',
 'object_file' => __FILE__,
 'path' => '/article_01.mc',
-'source_file' => 'C:/Users/gk70402/Desktop/cgipy/perlhello/comps/article_01.mc',
+'source_file' => 'C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/article_01.mc',
 );
 }
 sub _unset_class_cmeta { undef $_class_cmeta }
 sub _class_cmeta { $_class_cmeta }
 method main  {
-#line 1 "C:/Users/gk70402/Desktop/cgipy/perlhello/comps/article_01.mc"
+#line 1 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/article_01.mc"
 $$_m_buffer .= '<html>
    <head>
      <link rel="stylesheet" href="/static/css/blog.css">

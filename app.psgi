@@ -14,9 +14,13 @@ my $cwd = dirname( realpath(__FILE__) );
 my $interp = Mason->new(
     comp_root => "$cwd/comps",
     data_dir  => "$cwd/data",
+    data_dir  => "$cwd/data",
     plugins   => \@plugins,
 );
- 
+
+unshift(@INC, "$cwd/lib");
+
+
 # PSGI app
 my $app = sub {
     my $env = shift;
@@ -24,5 +28,6 @@ my $app = sub {
 };
 builder {
     # Include PSGI middleware here
+    enable 'Session';
     $app;
 };
