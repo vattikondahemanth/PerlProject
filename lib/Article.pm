@@ -3,7 +3,7 @@ use DBI;
 use Storable;
 use Exporter;
 our @ISA = qw(Exporter);
-our @EXPORT = qw(new save get_articles);
+our @EXPORT = qw(new save get_articles edit_articles);
 
 
 use HTTP::Request ();
@@ -112,12 +112,65 @@ sub get_articles {
 		push(@result, Article->new($title,  $content));
 	}
 	
+	$dbh->disconnect();
+	return \@result;
+}
+
+
+sub edit_articles {
+	my @result;
+	my ($self, $article) = @_;
+	
+	my $dbh  = DBI->connect($dsn,$username,$password, \%attr);
+	my $stmt = $dbh->prepare("SELECT  _title, _content from article where _title=?; ");
+	$stmt->bind_param(1, $article ); 
+	
+	$stmt->execute() or die "Couldn't execute statement: " . $stmt->errstr;
+	
+	while (($title, $content) = $stmt->fetchrow_array) {
+		push(@result, Article->new($title,  $content));
+	}
+	
 	
 	$dbh->disconnect();
 	
 	return \@result;
 	
 }
+
+
+
+sub save_edit_articles {
+	my ($self) = @_;
+	
+	my $dbh  = DBI->connect($dsn,$username,$password, \%attr);
+	my $stmt = $dbh->prepare("UPDATE article SET _content = ? WHERE _title = ?;");
+	
+	$stmt->bind_param(1, $self -> {_content} );
+	$stmt->bind_param(2, $self -> {_title} );
+	
+	$stmt->execute() or die "Couldn't execute statement: " . $stmt->errstr;
+	
+	$dbh->disconnect();
+}
+
+
+sub delete_articles {
+	my @result;
+	my ($self, $article) = @_;
+
+	my $dbh  = DBI->connect($dsn,$username,$password, \%attr);
+	my $stmt = $dbh->prepare("DELETE FROM article WHERE _title={$article};");
+	
+	$stmt->execute() or die "Couldn't execute statement: " . $stmt->errstr;
+
+	$dbh->disconnect();
+	
+	return \@result;
+	
+}
+
+
 
 sub index(){
 	
