@@ -24,8 +24,8 @@ my @commits =  Article -> get_commits() ;
     <div class="card-header text-center"> <% $article -> {_title} %> </div>
     <div class="card-body"> <% $article -> {_content} %> </div> 
     <div class="card-body">
-    <button type=\"submit\" >Submit</button>
-    <button type=\"button\" > <a href="/index"> Cancel </a> </button>
+    <a href="edit_article?article=<% $article -> {_title} %>" >Edit</a>
+    <a href="delete_article?article=<% $article -> {_title} %>" >Delete</a>
     </div>
 %   }
 % }

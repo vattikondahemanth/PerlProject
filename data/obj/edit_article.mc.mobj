@@ -1,0 +1,130 @@
+our ($_class_cmeta, $m, $_m_buffer, $_interp);
+BEGIN { 
+local $_interp = Mason::Interp->current_load_interp;
+$_interp->component_moose_class->import;
+$_interp->component_import_class->import;
+}
+*m = \$Mason::Request::current_request;
+*_m_buffer = \$Mason::Request::current_buffer;
+sub _inner { inner() }
+method _set_class_cmeta ($interp) {
+$_class_cmeta = $interp->component_class_meta_class->new(
+'class' => CLASS,
+'dir_path' => '/',
+'interp' => $interp,
+'is_top_level' => '1',
+'object_file' => __FILE__,
+'path' => '/edit_article.mc',
+'source_file' => 'C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/edit_article.mc',
+);
+}
+sub _unset_class_cmeta { undef $_class_cmeta }
+sub _class_cmeta { $_class_cmeta }
+method main  {
+#line 9 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/edit_article.mc"
+
+
+warn("============eidt_article is being executed!\n");
+
+use Article;
+
+use URI;
+my $path_args = $m->req->{'env'}->{'REQUEST_URI'};
+
+my $uri = URI->new($path_args);
+my $query = $uri->query;
+my @array = split("=", $query);
+
+my @articles = @{ Article -> edit_articles($array[1]) };
+
+
+
+#line 1 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/edit_article.mc"
+$$_m_buffer .= '<html>
+   <head>
+     <link rel="stylesheet" href="/static/css/blog.css">
+     <title>My Blog: Home</title>
+   </head>
+   <body>
+        ';
+#line 7 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/edit_article.mc"
+$m->comp(   'header.mi'  
+); #line 7 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/edit_article.mc"
+$$_m_buffer .= '
+';
+#line 27 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/edit_article.mc"
+$$_m_buffer .= '    </div>
+        <div align="center">
+			<h2>Edit your article</h2>
+';
+#line 30 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/edit_article.mc"
+ if (@articles) {
+   foreach my $article (@articles) {
+$$_m_buffer .= '
+			<form action="edit_publish" type="POST">
+                <p>Argument 1: ';
+#line 34 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/edit_article.mc"
+for (scalar($path_args)) { $$_m_buffer .= $_ if defined }
+#line 34 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/edit_article.mc"
+$$_m_buffer .= '</p>
+                <p>$queryquery 1: ';
+#line 35 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/edit_article.mc"
+for (scalar($query)) { $$_m_buffer .= $_ if defined }
+#line 35 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/edit_article.mc"
+$$_m_buffer .= '</p>
+                <p>$arrayarray 1wwwwwwwwww: ';
+#line 36 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/edit_article.mc"
+for (scalar($array[1])) { $$_m_buffer .= $_ if defined }
+#line 36 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/edit_article.mc"
+$$_m_buffer .= '</p>
+				<div class="mt-2">
+				<input type="text" id="title" class="fadeIn third" name="title" value=';
+#line 38 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/edit_article.mc"
+for (scalar($article -> {_title})) { $$_m_buffer .= $_ if defined }
+#line 38 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/edit_article.mc"
+$$_m_buffer .= '>
+				</div>
+				<br />
+				<div class="mt-2">
+				<input type="text" id="content" class="fadeIn second" name="content" value=';
+#line 42 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/edit_article.mc"
+for (scalar($article -> {_content})) { $$_m_buffer .= $_ if defined }
+#line 42 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/edit_article.mc"
+$$_m_buffer .= '>
+				</div>
+				<br />
+				<div class="mt-2">
+				<input type="submit" class="fadeIn fourth" value="Submit">
+				<button > <a href="/">Cancel</a> </button>
+				</div>
+				<br />
+				<h2 style="color:#069">
+				';
+#line 51 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/edit_article.mc"
+for (scalar($m -> req -> session -> {message})) { $$_m_buffer .= $_ if defined }
+#line 51 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/edit_article.mc"
+$$_m_buffer .= '
+				</h2>
+
+				</br>
+				</br>
+			</form>
+';
+#line 57 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/edit_article.mc"
+   }
+ }
+$$_m_buffer .= '
+		<div>
+
+        ';
+#line 62 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/edit_article.mc"
+$m->comp(   'footer.mi'  
+); #line 62 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/edit_article.mc"
+$$_m_buffer .= '
+
+  </body>
+</html>
+';
+
+;return;
+}

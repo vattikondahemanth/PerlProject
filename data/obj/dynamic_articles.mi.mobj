@@ -85,41 +85,40 @@ $$_m_buffer .= '<p>No articles yet.</p>
 ';
 #line 33 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
  }
-$$_m_buffer .= '<p> 0000000000000000000000000000000000</p>
-<br>
+$$_m_buffer .= '<br>
 ';
-#line 36 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
+#line 35 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
  if (@commits) {
 $$_m_buffer .= '
 <ul class="commits">
 ';
-#line 39 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
+#line 38 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
    foreach my $commit (@commits) {
 $$_m_buffer .= '  <li><b>Name-> </b> ';
-#line 40 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
+#line 39 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
 for (scalar($$commit{'name'})) { $$_m_buffer .= $_ if defined }
-#line 40 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
+#line 39 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
 $$_m_buffer .= '  <b>Message-></b> ';
-#line 40 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
+#line 39 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
 for (scalar($$commit{'message'})) { $$_m_buffer .= $_ if defined }
-#line 40 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
+#line 39 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
 $$_m_buffer .= ' <b>Date-></b> ';
-#line 40 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
+#line 39 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
 for (scalar($$commit{'date'})) { $$_m_buffer .= $_ if defined }
-#line 40 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
+#line 39 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
 $$_m_buffer .= '</li>
 ';
-#line 41 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
+#line 40 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
    }
 $$_m_buffer .= '</ul>
 
 ';
-#line 44 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
+#line 43 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
  }
  else {
 $$_m_buffer .= '<p>No commits yet.</p>
 ';
-#line 47 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
+#line 46 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/dynamic_articles.mi"
  }
 $$_m_buffer .= '
 ';

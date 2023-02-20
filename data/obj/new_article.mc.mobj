@@ -41,38 +41,42 @@ $m->comp(   'header.mi'
 $$_m_buffer .= '
 
 ';
-#line 16 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/new_article.mc"
-$$_m_buffer .= '     <h2>This is article Page</h2>
-	 <form action="publish" type="POST">
-	  <input type="text" id="title" class="fadeIn third" name="title" placeholder="Enter your title">
-	  <br />
-      <input type="text" id="content" class="fadeIn second" name="content" placeholder="Enter your content">
-	  <br />
-	  <br />
-      <input type="submit" class="fadeIn fourth" value="Create Article">
-	  <br />
-	  <br />
-	  <a href="/">Back to Home</a>
-	  <br />
-	  <br />
-	  <h2 style="color:#069">
-		';
-#line 30 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/new_article.mc"
+#line 15 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/new_article.mc"
+$$_m_buffer .= '			<div align="center">
+			<h2>Create your article</h2>
+			<form action="publish" type="POST">
+				<div class="mt-2">
+				<input type="text" id="title" class="fadeIn third" name="title" placeholder="Enter your title">
+				</div>
+				<br />
+				<div class="mt-2">
+				<input type="text" id="content" class="fadeIn second" name="content" placeholder="Enter your content">
+				</div>
+				<br />
+				<div class="mt-2">
+				<input type="submit" class="fadeIn fourth" value="Submit">
+				<button > <a href="/">Cancel</a> </button>
+				</div>
+				<br />
+				<h2 style="color:#069">
+				';
+#line 32 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/new_article.mc"
 for (scalar($m -> req -> session -> {message})) { $$_m_buffer .= $_ if defined }
-#line 30 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/new_article.mc"
+#line 32 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/new_article.mc"
 $$_m_buffer .= '
-	  </h2>
-	
-	</br>
-	</br>
-    </form>
-        ';
-#line 36 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/new_article.mc"
+				</h2>
+
+				</br>
+				</br>
+			</form>
+			<div>
+		';
+#line 39 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/new_article.mc"
 $m->comp(   'footer.mi'  
-); #line 36 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/new_article.mc"
+); #line 39 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/new_article.mc"
 $$_m_buffer .= '
 
-  </body>
+	</body>
 </html>';
 
 ;return;
