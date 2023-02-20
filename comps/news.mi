@@ -1,0 +1,40 @@
+<%init>
+use Article;
+my @commits =  Article -> get_commits() ;
+</%init>
+
+<style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+</style>
+
+% if (@commits) {
+  <table style="width:100%">
+    <tr>
+      <th>Date</th>
+      <th>Name</th>
+      <th>Commits</th>
+    </tr>
+% foreach my $commit (@commits) {
+    <tr>
+      <td align = 'center'><% $$commit{'date'} %></td>
+      <td align = 'center'><% $$commit{'name'} %> </td>
+      <td align = 'center'><% $$commit{'message'} %></td>
+    </tr>
+% }
+</table>
+
+% };
+
+<br>
+<br>
+<br>
