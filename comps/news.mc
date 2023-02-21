@@ -17,7 +17,8 @@
         <& header.mi &>
         <div class="card" align="center">
             <div class="card-body">
-                <h1>My Git Commit History</h1>
+                <h2> <u> <b> PerlProject </b> Project Git Commit History </u> </h2>
+                <br>
                 <& news.mi &>
             </div>
         </div>
