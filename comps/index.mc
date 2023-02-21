@@ -18,12 +18,16 @@
 
    <body>
 	  <& header.mi &>
+    <div align="center" >
+    <h2> Welcome to my blog.</h2>
+	  <h4> Hello world! The local time is <% scalar(localtime) %>. </h4>
+    <br>
+	  <h6> <b> News page </b>    :  To view all code commits  </h6>
+	  <h6> <b> Contact Page </b> :  Hierarchy details of the organization  </h6>
+	  <h6> <b> Create Article </b>:  Create new article  </h6>
+	  <h6> <b> All Article </b>  :   List of all article in our organization  </h6>
 
-    <h2>Welcome to my blog.</h2>
-	 Hello world! The local time is <% scalar(localtime) %>.
-
-  <p> ------------------------------------------------------------------------------------------------</p>
-	<& dynamic_articles.mi &>
+    </div>
 
 
 	  <& footer.mi &>

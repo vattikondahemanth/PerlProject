@@ -47,26 +47,26 @@ $$_m_buffer .= '   <body>
 $m->comp(   'header.mi'  
 ); #line 20 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/index.mc"
 $$_m_buffer .= '
-
-    <h2>Welcome to my blog.</h2>
-	 Hello world! The local time is ';
+    <div align="center" >
+    <h2> Welcome to my blog.</h2>
+	  <h4> Hello world! The local time is ';
 #line 23 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/index.mc"
 for (scalar(scalar(localtime))) { $$_m_buffer .= $_ if defined }
 #line 23 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/index.mc"
-$$_m_buffer .= '.
+$$_m_buffer .= '. </h4>
+    <br>
+	  <h6> <b> News page </b>    :  To view all code commits  </h6>
+	  <h6> <b> Contact Page </b> :  Hierarchy details of the organization  </h6>
+	  <h6> <b> Create Article </b>:  Create new article  </h6>
+	  <h6> <b> All Article </b>  :   List of all article in our organization  </h6>
 
-  <p> ------------------------------------------------------------------------------------------------</p>
-	';
-#line 26 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/index.mc"
-$m->comp(   'dynamic_articles.mi'  
-); #line 26 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/index.mc"
-$$_m_buffer .= '
+    </div>
 
 
 	  ';
-#line 29 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/index.mc"
+#line 33 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/index.mc"
 $m->comp(   'footer.mi'  
-); #line 29 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/index.mc"
+); #line 33 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/index.mc"
 $$_m_buffer .= '
 
   </body>

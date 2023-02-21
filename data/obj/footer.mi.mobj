@@ -34,7 +34,8 @@ $$_m_buffer .= '<style>
     color: white;
     }
 </style>
-
+<br>
+<br>
 <footer>
   <p>Author: Vattikonda Hemanth</p>
 </footer>';
