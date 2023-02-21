@@ -1,0 +1,88 @@
+our ($_class_cmeta, $m, $_m_buffer, $_interp);
+BEGIN { 
+local $_interp = Mason::Interp->current_load_interp;
+$_interp->component_moose_class->import;
+$_interp->component_import_class->import;
+}
+*m = \$Mason::Request::current_request;
+*_m_buffer = \$Mason::Request::current_buffer;
+sub _inner { inner() }
+method _set_class_cmeta ($interp) {
+$_class_cmeta = $interp->component_class_meta_class->new(
+'class' => CLASS,
+'dir_path' => '/',
+'interp' => $interp,
+'is_top_level' => '0',
+'object_file' => __FILE__,
+'path' => '/news.mi',
+'source_file' => 'C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/news.mi',
+);
+}
+sub _unset_class_cmeta { undef $_class_cmeta }
+sub _class_cmeta { $_class_cmeta }
+method main  {
+#line 1 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/news.mi"
+
+use Article;
+my @commits =  Article -> get_commits() ;
+
+#line 6 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/news.mi"
+$$_m_buffer .= '<style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+</style>
+
+';
+#line 20 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/news.mi"
+ if (@commits) {
+$$_m_buffer .= '  <table style="width:100%">
+    <tr>
+      <th>Date</th>
+      <th>Name</th>
+      <th>Commits</th>
+    </tr>
+';
+#line 27 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/news.mi"
+ foreach my $commit (@commits) {
+$$_m_buffer .= '    <tr>
+      <td align = \'center\'>';
+#line 29 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/news.mi"
+for (scalar($$commit{'date'})) { $$_m_buffer .= $_ if defined }
+#line 29 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/news.mi"
+$$_m_buffer .= '</td>
+      <td align = \'center\'>';
+#line 30 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/news.mi"
+for (scalar($$commit{'name'})) { $$_m_buffer .= $_ if defined }
+#line 30 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/news.mi"
+$$_m_buffer .= ' </td>
+      <td align = \'center\'>';
+#line 31 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/news.mi"
+for (scalar($$commit{'message'})) { $$_m_buffer .= $_ if defined }
+#line 31 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/news.mi"
+$$_m_buffer .= '</td>
+    </tr>
+';
+#line 33 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/news.mi"
+ }
+$$_m_buffer .= '</table>
+
+';
+#line 36 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/news.mi"
+ };
+$$_m_buffer .= '
+<br>
+<br>
+<br>
+';
+
+;return;
+}

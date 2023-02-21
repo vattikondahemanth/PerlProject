@@ -21,7 +21,7 @@ $_class_cmeta = $interp->component_class_meta_class->new(
 sub _unset_class_cmeta { undef $_class_cmeta }
 sub _class_cmeta { $_class_cmeta }
 method main  {
-#line 10 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/new_article.mc"
+#line 19 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/new_article.mc"
 
 
 warn("============new_article is being executed!\n");
@@ -32,16 +32,25 @@ $$_m_buffer .= '<html>
    <head>
      <link rel="stylesheet" href="/static/css/blog.css">
      <title>My Blog: Home</title>
+
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
    </head>
    <body>
         ';
-#line 7 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/new_article.mc"
+#line 16 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/new_article.mc"
 $m->comp(   'header.mi'  
-); #line 7 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/new_article.mc"
+); #line 16 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/new_article.mc"
 $$_m_buffer .= '
 
 ';
-#line 15 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/new_article.mc"
+#line 24 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/new_article.mc"
 $$_m_buffer .= '			<div align="center">
 			<h2>Create your article</h2>
 			<form action="publish" type="POST">
@@ -60,9 +69,9 @@ $$_m_buffer .= '			<div align="center">
 				<br />
 				<h2 style="color:#069">
 				';
-#line 32 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/new_article.mc"
+#line 41 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/new_article.mc"
 for (scalar($m -> req -> session -> {message})) { $$_m_buffer .= $_ if defined }
-#line 32 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/new_article.mc"
+#line 41 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/new_article.mc"
 $$_m_buffer .= '
 				</h2>
 
@@ -71,9 +80,9 @@ $$_m_buffer .= '
 			</form>
 			<div>
 		';
-#line 39 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/new_article.mc"
+#line 48 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/new_article.mc"
 $m->comp(   'footer.mi'  
-); #line 39 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/new_article.mc"
+); #line 48 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/new_article.mc"
 $$_m_buffer .= '
 
 	</body>

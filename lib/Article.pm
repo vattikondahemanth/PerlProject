@@ -12,7 +12,7 @@ use JSON::Parse qw/parse_json parse_json_safe/;
 
 sub get_commits{
 	
-	my $url = 'https://api.github.com/repos/vattikondahemanth/perlhello/commits?sha=main';
+	my $url = 'https://api.github.com/repos/vattikondahemanth/PerlProject/commits?sha=main';
 	my $header = ['Content-Type' => 'application/json; charset=UTF-8'];
 
 	$request = HTTP::Request->new('GET', $url, $header);

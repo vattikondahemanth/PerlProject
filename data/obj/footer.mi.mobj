@@ -15,24 +15,25 @@ $_class_cmeta = $interp->component_class_meta_class->new(
 'is_top_level' => '0',
 'object_file' => __FILE__,
 'path' => '/footer.mi',
-'source_file' => 'C:/Users/gk70402/Desktop/cgipy/perlhello/comps/footer.mi',
+'source_file' => 'C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/footer.mi',
 );
 }
 sub _unset_class_cmeta { undef $_class_cmeta }
 sub _class_cmeta { $_class_cmeta }
 method main  {
-#line 1 "C:/Users/gk70402/Desktop/cgipy/perlhello/comps/footer.mi"
-$$_m_buffer .= '
-
-<style>
+#line 1 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/footer.mi"
+$$_m_buffer .= '<style>
     footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
     text-align: center;
     padding: 3px;
     background-color: DarkSalmon;
     color: white;
     }
 </style>
-
 
 <footer>
   <p>Author: Vattikonda Hemanth</p>
