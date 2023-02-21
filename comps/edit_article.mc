@@ -29,7 +29,6 @@ my @articles = @{ Article -> edit_articles($array[1]) };
 			<h2>Edit your article</h2>
 % if (@articles) {
 %   foreach my $article (@articles) {
-
 			<form action="edit_publish" type="POST">
 				<div class="mt-2">
 				<input type="text" readonly id="title" class="fadeIn third" name="title" value=<% $article -> {_title} %>>

@@ -18,14 +18,15 @@ my @commits =  Article -> get_commits() ;
 % if (@articles) {
     <h4 align="center"> <b>Showing <% scalar(@articles) %> article<% @articles > 1 ? "s" : "" %>.</b> <h4>
 
-    <div  class="articles" >
+    <div  class="articles container-fluid " >
 %   foreach my $article (@articles) {
-    <div class="card mt-4" >
+    <div class="card mt-2 rounded border border-dark"  >
     <div class="card-header text-center"> <% $article -> {_title} %> </div>
     <div class="card-body"> <% $article -> {_content} %> </div> 
-    <div class="card-body">
-    <a href="edit_article?article=<% $article -> {_title} %>" >Edit</a>
+    <div class="card-body" align="right">
+    <a href="edit_article?article=<% $article -> {_title} %>" >Edit</a> 
     <a href="delete_article?article=<% $article -> {_title} %>" >Delete</a>
+    </div>
     </div>
 %   }
 % }

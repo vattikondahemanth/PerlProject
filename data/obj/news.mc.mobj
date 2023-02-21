@@ -46,18 +46,17 @@ $$_m_buffer .= '
         <div class="card" align="center">
             <div class="card-body">
                 <h2> <u> <b> PerlProject </b> Project Git Commit History </u> </h2>
-                <br>
                 ';
-#line 22 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/news.mc"
+#line 21 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/news.mc"
 $m->comp(   'news.mi'  
-); #line 22 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/news.mc"
+); #line 21 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/news.mc"
 $$_m_buffer .= '
             </div>
         </div>
         ';
-#line 25 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/news.mc"
+#line 24 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/news.mc"
 $m->comp(   'footer.mi'  
-); #line 25 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/news.mc"
+); #line 24 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/news.mc"
 $$_m_buffer .= '
     </body>
 </html>';
