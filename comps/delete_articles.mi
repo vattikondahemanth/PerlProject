@@ -1,2 +1,33 @@
 
+<%init>
 
+warn("============eidt_article is being executed!33\n");
+
+use URI;
+my $path_args = $m->req->{'env'}->{'REQUEST_URI'};
+
+my $uri = URI->new($path_args);
+my $query = $uri->query;
+my @array = split("=", $query);
+
+</%init>
+
+</div>
+    <div align="center">
+        <h2>Delete article</h2>
+        <form action="delete_publish" type="POST">
+            <p align="center"> Are you sure you want to delete <strong><%  $array[1] %></strong> </p>
+            <input type="hidden" id="title" class="fadeIn third" name="title" value=<%  $array[1] %>>
+            <div class="mt-2">
+                <input type="submit" class="fadeIn fourth" value="Submit">
+            <button > <a href="all_articles">Cancel</a> </button>
+            </div>
+            <br />
+            <h2 style="color:#069">
+                <% $m -> req -> session -> {message} %>
+            </h2>
+            </br>
+            </br>
+        </form>
+    </div>
+</div>

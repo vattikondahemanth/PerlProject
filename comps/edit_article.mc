@@ -31,11 +31,8 @@ my @articles = @{ Article -> edit_articles($array[1]) };
 %   foreach my $article (@articles) {
 
 			<form action="edit_publish" type="POST">
-                <p>Argument 1: <% $path_args %></p>
-                <p>$queryquery 1: <% $query %></p>
-                <p>$arrayarray 1wwwwwwwwww: <% $array[1] %></p>
 				<div class="mt-2">
-				<input type="text" id="title" class="fadeIn third" name="title" value=<% $article -> {_title} %>>
+				<input type="text" readonly id="title" class="fadeIn third" name="title" value=<% $article -> {_title} %>>
 				</div>
 				<br />
 				<div class="mt-2">
@@ -44,7 +41,7 @@ my @articles = @{ Article -> edit_articles($array[1]) };
 				<br />
 				<div class="mt-2">
 				<input type="submit" class="fadeIn fourth" value="Submit">
-				<button > <a href="/">Cancel</a> </button>
+				<button > <a href="all_articles">Cancel</a> </button>
 				</div>
 				<br />
 				<h2 style="color:#069">

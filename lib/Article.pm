@@ -3,7 +3,7 @@ use DBI;
 use Storable;
 use Exporter;
 our @ISA = qw(Exporter);
-our @EXPORT = qw(new save get_articles edit_articles);
+our @EXPORT = qw(new save get_articles edit_articles delete_articles);
 
 
 use HTTP::Request ();
@@ -142,25 +142,46 @@ sub edit_articles {
 
 sub save_edit_articles {
 	my ($self) = @_;
-	
+	my $title = $self->{_title};
+	my $content = $self->{_content};
+
 	my $dbh  = DBI->connect($dsn,$username,$password, \%attr);
 	my $stmt = $dbh->prepare("UPDATE article SET _content = ? WHERE _title = ?;");
 	
-	$stmt->bind_param(1, $self -> {_content} );
-	$stmt->bind_param(2, $self -> {_title} );
+	$stmt->bind_param(1, $content);
+	$stmt->bind_param(2, $title );
 	
 	$stmt->execute() or die "Couldn't execute statement: " . $stmt->errstr;
 	
 	$dbh->disconnect();
+	return \@result;
+}
+
+
+sub delete {
+
+   my $class = shift;
+   my $self = {
+      _title => shift
+
+   };
+
+   
+   bless $self, $class;
+   return $self;
 }
 
 
 sub delete_articles {
 	my @result;
-	my ($self, $article) = @_;
+	my ($self) = @_;
+	my $title = $self->{_title};
 
 	my $dbh  = DBI->connect($dsn,$username,$password, \%attr);
-	my $stmt = $dbh->prepare("DELETE FROM article WHERE _title={$article};");
+	my $stmt = $dbh->prepare("DELETE FROM article WHERE _title= ? ;");
+
+	$stmt->bind_param(1, $title );
+	warn("===delete_articles=== $title ==Count of \$stmt is " . scalar($title) . "\n");
 	
 	$stmt->execute() or die "Couldn't execute statement: " . $stmt->errstr;
 
