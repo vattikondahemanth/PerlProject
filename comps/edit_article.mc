@@ -35,7 +35,8 @@ my @articles = @{ Article -> edit_articles($array[1]) };
 				</div>
 				<br />
 				<div class="mt-2">
-				<input type="text" id="content" class="fadeIn second" name="content" value=<% $article -> {_content} %>>
+				<textarea type="text" id="content" class="fadeIn second" name="content" rows="5" > <% $article -> {_content} %>
+				</textarea>
 				</div>
 				<br />
 				<div class="mt-2">

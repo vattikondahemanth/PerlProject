@@ -3,6 +3,10 @@
 
 warn("============eidt_article is being executed!33\n");
 
+my $session = $m->req->session;
+$session->{message} = "";
+
+
 use URI;
 my $path_args = $m->req->{'env'}->{'REQUEST_URI'};
 

@@ -70,11 +70,12 @@ $$_m_buffer .= '>
 				</div>
 				<br />
 				<div class="mt-2">
-				<input type="text" id="content" class="fadeIn second" name="content" value=';
+				<textarea type="text" id="content" class="fadeIn second" name="content" rows="5" > ';
 #line 38 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/edit_article.mc"
 for (scalar($article -> {_content})) { $$_m_buffer .= $_ if defined }
 #line 38 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/edit_article.mc"
-$$_m_buffer .= '>
+$$_m_buffer .= '
+				</textarea>
 				</div>
 				<br />
 				<div class="mt-2">
@@ -84,9 +85,9 @@ $$_m_buffer .= '>
 				<br />
 				<h2 style="color:#069">
 				';
-#line 47 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/edit_article.mc"
+#line 48 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/edit_article.mc"
 for (scalar($m -> req -> session -> {message})) { $$_m_buffer .= $_ if defined }
-#line 47 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/edit_article.mc"
+#line 48 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/edit_article.mc"
 $$_m_buffer .= '
 				</h2>
 
@@ -94,16 +95,16 @@ $$_m_buffer .= '
 				</br>
 			</form>
 ';
-#line 53 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/edit_article.mc"
+#line 54 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/edit_article.mc"
    }
  }
 $$_m_buffer .= '
 		<div>
 
         ';
-#line 58 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/edit_article.mc"
+#line 59 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/edit_article.mc"
 $m->comp(   'footer.mi'  
-); #line 58 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/edit_article.mc"
+); #line 59 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/edit_article.mc"
 $$_m_buffer .= '
 
   </body>

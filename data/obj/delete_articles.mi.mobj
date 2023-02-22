@@ -21,10 +21,55 @@ $_class_cmeta = $interp->component_class_meta_class->new(
 sub _unset_class_cmeta { undef $_class_cmeta }
 sub _class_cmeta { $_class_cmeta }
 method main  {
-#line 1 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/delete_articles.mi"
-$$_m_buffer .= '
+#line 2 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/delete_articles.mi"
 
-';
+
+warn("============eidt_article is being executed!33\n");
+
+my $session = $m->req->session;
+$session->{message} = "";
+
+
+use URI;
+my $path_args = $m->req->{'env'}->{'REQUEST_URI'};
+
+my $uri = URI->new($path_args);
+my $query = $uri->query;
+my @array = split("=", $query);
+
+
+#line 19 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/delete_articles.mi"
+$$_m_buffer .= '</div>
+    <div align="center">
+        <h2>Delete article</h2>
+        <form action="delete_publish" type="POST">
+            <p align="center"> Are you sure you want to delete <strong>';
+#line 23 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/delete_articles.mi"
+for (scalar($array[1])) { $$_m_buffer .= $_ if defined }
+#line 23 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/delete_articles.mi"
+$$_m_buffer .= '</strong> </p>
+            <input type="hidden" id="title" class="fadeIn third" name="title" value=';
+#line 24 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/delete_articles.mi"
+for (scalar($array[1])) { $$_m_buffer .= $_ if defined }
+#line 24 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/delete_articles.mi"
+$$_m_buffer .= '>
+            <div class="mt-2">
+                <input type="submit" class="fadeIn fourth" value="Submit">
+            <button > <a href="all_articles">Cancel</a> </button>
+            </div>
+            <br />
+            <h2 style="color:#069">
+                ';
+#line 31 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/delete_articles.mi"
+for (scalar($m -> req -> session -> {message})) { $$_m_buffer .= $_ if defined }
+#line 31 "C:/Users/gk70402/Desktop/cgipy/PerlProject/comps/delete_articles.mi"
+$$_m_buffer .= '
+            </h2>
+            </br>
+            </br>
+        </form>
+    </div>
+</div>';
 
 ;return;
 }

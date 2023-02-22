@@ -1,23 +1,17 @@
 <html>
    <head>
-     <link rel="stylesheet" href="/static/css/blog.css">
-     <title>My Blog: Home</title>
-<%init>
-	my $session = $m->req->session;
-	$session->{message} = "";
+        <link rel="stylesheet" href="/static/css/blog.css">
+        <title>My Blog: Home</title>
 
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
-use URI;
-my $path_args = $m->req->{'env'}->{'REQUEST_URI'};
+    </head>
 
-my $uri = URI->new($path_args);
-my $query = $uri->query;
-my @array = split("=", $query);
-
-
-</%init>
-
-   </head>
    <body>
 
 	  <& header.mi &>
