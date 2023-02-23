@@ -23,15 +23,16 @@ sub get_commits{
 	my @commit_results;
 
 	foreach my $commit_dict (@$q) {
-		$committer = $commit_dict ->  {commit} -> {committer} -> {name};
-		$commit_message =  $commit_dict ->  {commit} -> {message};
-		$commit_date = $commit_dict ->  {commit} -> {committer} -> {date};
-		
-		my %temp_dict = (name => {},  message => {}, date => {});
-		
-		%temp_dict = (name => $committer,  message => $commit_message, date => $commit_date);
-		push(@commit_results, \%temp_dict);
-		
+		$commit_msg =  $commit_dict ->  {commit} -> {message};
+
+		if ($commit_msg !~ "Merge branch 'main' of https://github.com/vattikondahemanth/PerlProject"){
+			$committer = $commit_dict ->  {commit} -> {committer} -> {name};
+			$commit_message =  $commit_dict ->  {commit} -> {message};
+			$commit_date = $commit_dict ->  {commit} -> {committer} -> {date};
+			my %temp_dict = (name => {},  message => {}, date => {});
+			%temp_dict = (name => $committer,  message => $commit_message, date => $commit_date);
+			push(@commit_results, \%temp_dict);
+			}
 	}
 	return @commit_results;
 	
